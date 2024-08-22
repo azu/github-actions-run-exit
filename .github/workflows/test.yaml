@@ -1,0 +1,17 @@
+name: Test Exit
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Exit 1 does not stop step
+        run: |
+          exit 1
+          echo "This will still run"
